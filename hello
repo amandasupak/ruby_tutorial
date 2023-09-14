@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+puts "hello world, but the second version"
+
+# this file does not have the .rb at the end of the file name
+# because the filename itself is the user interface, 
+# and there’s no reason to expose the implementation language to the user.
+# it also allows you to rewrite the scrpit in another language without
+# changing the command our program's users have to type
+
+# TO RUN on command line
+# > ruby hello
+# or use 
+# > chmod -x hello
+# > ./hello
