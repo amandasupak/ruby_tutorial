@@ -1,4 +1,6 @@
 require 'sinatra'
+require './day'
+
 get '/' do
-    'hello, world!'
+    greeting(Time.now)
 end
