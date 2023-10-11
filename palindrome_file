@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require 'Asupak_palindrome'
+
+
+palindromes = File.readlines("phrases.txt").select(&:palindrome?)
+palindromes.each { |palindrome| puts "palindrome detected: #{palindrome}" }
+File.write('palindrome_file.txt', palindromes.join)
+
+
+
+
+#old version
+
+# lines = File.readlines("phrases.txt")
+# lines.each do |line|
+#    if line.palindrome?
+#        puts "palindrome detected: #{line}"
+#    end
+# end
+# palindromes = lines.select(&:palindrome?)
+# File.write('palindrome_file.txt', palindromes)
+
