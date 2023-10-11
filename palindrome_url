@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require 'asupak_palindrome'
+require 'open-uri'
+
+
+palindromes = URI.open('https://cdn.learnenough.com/phrases.txt').select(&:palindrome?)
+palindromes.each { |palindrome| puts "palindrome detected: #{palindrome}" }
+File.write('palindrome_urltxt', palindromes.join)
+
+
+# to run in irb:
+# >./palindrome_url
