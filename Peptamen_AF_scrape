@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require 'nokogiri'
+require 'open-uri'
+
+
+# Returns the nutrition information for 250 ml Peptamne AF
+
+url = 'https://www.nestlemedicalhub.com/products/peptamen-af'
+doc = Nokogiri::HTML(URI.open(url).read)
+
+peptamen_af = {}
+
+# Assuming the nutrition information is in a table
+doc.css('table').each do |table|
+    # Loop through each row in the table
+    table.css('tr').each do |row|
+        columns = row.css('td')
+        # Skip rows that don't have exactly three columns ([Nutrient, 250ml, 1000ml])
+        next unless columns.size == 3
+
+        nutrient = columns[0].text.strip
+        value_250ml = columns[1].text.strip
+
+        peptamen_af[nutrient] = value_250ml
+    end
+end
+
+puts peptamen_af
