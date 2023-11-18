@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ansi (1.5.0)
+    asupak_palindrome (0.1.0)
     builder (3.2.4)
     ffi (1.16.3)
     listen (3.8.0)
@@ -45,6 +46,7 @@ PLATFORMS
   x86_64-darwin-22
 
 DEPENDENCIES
+  asupak_palindrome (= 0.1.0)
   minitest (= 5.15.0)
   minitest-reporters (= 1.5.0)
   nokogiri (= 1.13.3)
