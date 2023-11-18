@@ -10,6 +10,22 @@ class PalindromeAppTest < Minitest::Test
         @base_title = "Learn Enough Ruby Sample App"
     end
     
+    def test_form_presence
+        get '/palindrome'
+        assert doc(last_response).at_css('form')
+    end
+
+    def test_non_palindrome_submission
+        post '/check', phrase: "Not a palindrome"
+        assert_includes doc(last_response).at_css('p').content, "is not a palindrome"
+        assert doc(last_response).at_css('form')
+    end
+
+    def test_palindrome_submission
+        post '/check', phrase: "Able was I, ere I saw Elba."
+        assert_includes doc(last_response).at_css('p').content, "is a palindrome"
+    end
+
     def test_index
         get '/'
         assert last_response.ok?
