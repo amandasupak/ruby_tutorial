@@ -11,17 +11,27 @@ class PalindromeAppTest < Minitest::Test
         assert last_response.ok?
         # another test to check to see if there is a first H1 tag
         assert doc(last_response).at_css('h1')
+        #test for the title of the page
+        title_content = doc(last_response).at_css('title').content 
+        assert_equal "Learn Enough Ruby Sample App | Home", title_content
+        #test for the navigation bar
+        assert doc(last_response).at_css('nav')
     end
 
     def test_about
         get '/about'
         assert last_response.ok?
         assert doc(last_response).at_css('h1')
+        title_content = doc(last_response).at_css('title').content 
+        assert_equal "Learn Enough Ruby Sample App | About", title_content
     end
+    
 
     def test_palindrome
         get '/palindrome'
         assert last_response.ok?
         assert doc(last_response).at_css('h1')
-    end 
+        title_content = doc(last_response).at_css('title').content 
+        assert_equal "Learn Enough Ruby Sample App | Palindrome Detector", title_content
+    end
 end

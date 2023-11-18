@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Learn Enough Ruby Sample App</title>
+        <title>Learn Enough Ruby Sample App | <%= @title %></title>
         <link rel="stylesheet" type="text/css" href="/stylesheets/main.css"> 
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"
             rel="stylesheet">
@@ -12,7 +12,11 @@
             <img src="/images/logo_b.png" alt="Learn Enough logo">
         </a>
         <div class="container">
+            <!-- pulls the content of navigation.erb here to reduce clutter-->
+            <%= erb :navigation%>
             <div class="content">
+                <!-- yields the content of each of the other pages (home/about/
+                palindrome.erb)to reduce clutter-->
                 <%= yield %>
             </div>
         </div>
